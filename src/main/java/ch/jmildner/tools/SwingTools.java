@@ -48,7 +48,6 @@ import java.awt.*;
 @Deprecated
 public final class SwingTools
 {
-
     /**
      * <code>addComponent</code> fuegt eine Komponente in einen Container ein.
      * <p>

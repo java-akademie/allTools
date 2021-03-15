@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
  */
 public final class BigDecimalTools
 {
-
+// clone geaendert
     /**
      * max = +decimal(31,2)
      */

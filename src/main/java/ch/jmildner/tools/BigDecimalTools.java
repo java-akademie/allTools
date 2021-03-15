@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
  */
 public final class BigDecimalTools
 {
-// clone geaendert
+
     /**
      * max = +decimal(31,2)
      */
@@ -128,13 +128,11 @@ public final class BigDecimalTools
     /*
      * MAKE A BIG_DECIMAL
      */
-    public static BigDecimal makeRandom() throws Exception
-    {
+    public static BigDecimal makeRandom() {
         return makeRandom(31, 2);
     }
 
-    public static BigDecimal makeRandom(int laenge, int dezimalStellen) throws Exception
-    {
+    public static BigDecimal makeRandom(int laenge, int dezimalStellen) {
         int vorkommaStellen = (int) (Math.random()
                 * (laenge - dezimalStellen + 1));
 

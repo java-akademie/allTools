@@ -3,15 +3,7 @@ package ch.jmildner.tools;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public final class CryptJ
-{
-
-    /**
-     * Klasse darf nicht erweitert und nicht instantiiert werden.
-     */
-    private CryptJ()
-    {
-    }
+public final class CryptJ {
 
     /**
      * <pre>
@@ -23,7 +15,13 @@ public final class CryptJ
      * 	 	SHA-512 Laenge des verschluesselten Werts 128
      * </pre>
      */
-    private static final String DEFAULT_ALGORITHM = "SHA-1";
+    private static final String DEFAULT_ALGORITHM = "SHA-512";
+
+    /**
+     * Klasse darf nicht erweitert und nicht instantiiert werden.
+     */
+    private CryptJ() {
+    }
 
     /**
      * Es wird ein Originaltwert (z.B. ein Passwort) mittels dem
@@ -35,8 +33,7 @@ public final class CryptJ
      *                                  Verschluesselungsalgorithmus
      */
     public static String crypt(String original)
-            throws NoSuchAlgorithmException
-    {
+            throws NoSuchAlgorithmException {
         return crypt(original, DEFAULT_ALGORITHM);
     }
 
@@ -51,20 +48,17 @@ public final class CryptJ
      *                                  Verschluesselungsalgorithmus
      */
     public static String crypt(String original, String algorithm)
-            throws NoSuchAlgorithmException
-    {
+            throws NoSuchAlgorithmException {
         original = original.trim();
         MessageDigest md;
         md = MessageDigest.getInstance(algorithm);
         md.update(original.getBytes());
         byte[] mb = md.digest();
         StringBuilder buffer = new StringBuilder();
-        for (int i = 0; i < mb.length; i++)
-        {
+        for (int i = 0; i < mb.length; i++) {
             byte temp = mb[i];
             String s = Integer.toHexString(temp);
-            while (s.length() < 2)
-            {
+            while (s.length() < 2) {
                 s = "0" + s;
             }
             s = s.substring(s.length() - 2);
@@ -85,8 +79,7 @@ public final class CryptJ
      *                                  Verschluesselungsalgorithmus
      */
     public static final boolean compare(String crypted, String original)
-            throws IllegalArgumentException, NoSuchAlgorithmException
-    {
+            throws IllegalArgumentException, NoSuchAlgorithmException {
         return compare(crypted, original, DEFAULT_ALGORITHM);
     }
 
@@ -104,8 +97,7 @@ public final class CryptJ
      */
     public static final boolean compare(String crypted, String original,
                                         String algorithm)
-            throws IllegalArgumentException, NoSuchAlgorithmException
-    {
+            throws IllegalArgumentException, NoSuchAlgorithmException {
         String encoded = crypt(original, algorithm);
         return encoded.equals(crypted);
     }
